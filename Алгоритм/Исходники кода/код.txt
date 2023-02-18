@@ -1,0 +1,217 @@
+код по state machin
+#include "EspMQTTClient.h"
+#include <painlessMesh.h>
+
+#define   MESH_PREFIX     "whateverYouLike"
+#define   MESH_PASSWORD   "somethingSneaky"
+#define   MESH_PORT       5555
+
+
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
+#define MQTT_HOST "mqtt.by"
+#define MQTT_PORT 1883
+#define MQTT_USER_NAME "ququpi"
+#define MQTT_USER_PASSWORD "2zucerch5"
+#define MQTT_CLIENT_ID "123456789"
+
+#define UART_SPEED 115200
+
+////
+
+#define NO_CONNECTION_STATE 0
+#define WAITING_STATE 1
+#define SENSOR_ANALISYS_STATE 2
+#define CHECK_WATER_STATE 3
+#define WATERING_ON_STATE 4
+#define ERROR_STATE 5
+
+#define CONNECT_CMD '0'
+#define GET_MST_CMD '1'
+#define WTR_ON_CMD '2'
+#define WTR_OFF_CMD '3'
+#define WAT_LEV_OK_CMD '4'
+#define WAT_LEV_BAD_CMD '5'
+#define WAIT_WTR_CMD '6'
+#define DIS'CONNECT'_CMD '7'
+
+
+EspMQTTClient client(
+  WIFI_SSID, 
+  WIFI_PASSWORD, 
+  MQTT_HOST, 
+  MQTT_USER_NAME, 
+  MQTT_USER_PASSWORD, 
+  MQTT_CLIENT_ID, 
+  MQTT_PORT 
+);
+	
+	
+int watering  
+int state = SENSOR_ANALISYS_STATE;
+
+void setup(){
+}
+int getCommand(){
+	int cmd = Serial.read();
+	return cmd;
+}
+void loop(){
+		int cmd = getCommand();
+		switch(state){
+			case SENSOR_ANALISYS_STATE:{
+				senAnSt_handler(cmd);
+				break;
+			}
+			case WAITING_STATE:{
+				waitSt_handler(cmd);
+				break;
+			}
+			case CHECK_WATER_STATE:{
+				ChWtSt_handler(cmd);
+				break;
+			}
+			case CHECK_WATER_STATE:{
+				ChWtSt_handler(cmd);
+				break;
+			}
+													!
+			case COUNT_STATE:{
+				CountSt_handler(cmd);
+				break;
+			}
+			case WATERING_ON_STATE:{
+				WtOnSt_handler(cmd);
+				break;
+			}
+			case ERROR_STATE:{
+				ErrorSt_handler();
+				break;
+			}
+			case NO_CONNECTION_STATE:{
+				noConSt_handler();
+				break;
+			}
+			
+int getCommand();
+Watering userWatering;
+void sendMessage();
+	void receivedCallback( uint32_t from, String &msg ){
+		Serial.printf("startHere: Received from user/ququpi msg=%s\n", from, msg.c_str());
+		waterringTimeoutInSec = msg; 
+	
+uint32_t waterring_start_time;
+
+
+void chWtSt_handler(){
+
+ bool waterLevel = checkWaterLevel();
+ if (waterLevel){
+  waterring_start_time = millis();
+  state = WATERING_ON_STATE; 
+ }
+ else{
+  state = ERROR_STATE;
+ }
+}
+
+
+#define MSEC_IN_SEC 1000
+int waterringTimeoutInSec = 10;
+
+
+
+void wtOnSt_handler(int cmd){
+ uint32_t now = millis();
+ pump_turn_on();
+ 
+ if (abs(now - waterring_start_time) >= waterringTimeoutInSec*MSEC_IN_SEC){
+  pump_turn_off();
+  state = WAITING_STATE;
+ }
+ else{
+  bool waterLevel = checkWaterLevel();
+  if (!waterLevel){
+   pump_turn_off();
+   state = ERROR_STATE;
+  }
+ }
+ 
+}
+	
+////
+
+int watering  
+int st = READ_STATE;                            	 !!
+
+void setup(){
+}
+int getCommand(){
+	int cmd = Serial.read();
+	return cmd;
+}
+void loop(){
+		int cmd = getCommand();
+		switch(state){
+			case READ_STATE:{
+				readSt_handler(cmd);
+				break;
+			}
+			case NO_CON_ST:{
+				turnOnSt_handler();
+				break;
+			}
+			case DVC_ACTIVE_STATE:{
+				dvcAcSt_handler(cmd);
+				break;
+			}
+			case ACTIVE_ST:{
+				activeSt_handler(cmd);
+				break;
+			}
+		}
+int getCommand(){
+	int cmd = NO_CMD;
+	
+////
+int watering  
+int state = SENSOR_TEST_STATE ;
+
+void setup(){
+}
+int getCommand(){
+	int cmd = Serial.read();
+	return cmd;
+}
+void loop(){
+		int cmd = getCommand();
+		switch(state){
+			case SENSOR_TEST_STATE :{
+				senAnSt_handler(cmd);
+				break;
+			}
+			case NO_CNCTN_STATE:{
+				noConSt_handler();
+				break;
+			}
+			case WAIT_STATE:{
+				waitSt_handler(cmd);
+				break;
+			}
+			case AIR_ON_STATE:{
+				airOnSt_handler(cmd);
+				break;
+			}
+													!
+			case ERROR_AIR_STATE:{
+				errorSt_handler();
+				break;
+			}
+			case COUNTING_STATE:{
+				countngSt_handler(cmd);
+				break;
+			}
+		}
+int getCommand(){
+	int cmd = NO_CMD;
+	
