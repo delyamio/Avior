@@ -9,10 +9,9 @@ FILE_DESCRIPTION(
 /* implementation_level */ '2;1');
 
 FILE_NAME(
-/* name */ 
-'C:\\Users\\Tasya\\Desktop\\\X2\04420435043F043B043804460430\X0\\\3D \X2\043C043E04340435043B0438\X0\\\
-\X2\0414043504420430043B0438\X0\ step\\Li-po.stp',
-/* time_stamp */ '2023-02-19T00:55:24+03:00',
+/* name */ 'C:\\Users\\Tasya\\Desktop\\\X2\04420435043F043B043804460430\X0\\\
+3D\\Li-po.stp',
+/* time_stamp */ '2023-02-20T21:37:12+03:00',
 /* author */ ('Tasya'),
 /* organization */ (''),
 /* preprocessor_version */ 'ST-DEVELOPER v18.1',
