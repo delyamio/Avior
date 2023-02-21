@@ -1,3 +1,6 @@
+//Более расширенные блок схемы нахоятся на GitHub
+//Для остальных систем код будет схожим, но сдругими переменными и ограничениями
+
 #include <Arducam_Mega.h> 
  
 #include <AsyncPrinter.h> 
@@ -158,4 +161,5 @@ void wtOnSt_handler(int cmd){
     digitalWrite(watering, LOW); 
    pump_turn_off(); 
    state = ERROR_STATE; 
+   }
   }
